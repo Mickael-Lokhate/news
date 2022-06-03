@@ -14,7 +14,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/search">
               <a className="link">Search</a>
             </Link>
           </li>
