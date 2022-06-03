@@ -1,5 +1,17 @@
+import Layout from "../components/Layout";
+
 function Home() {
-  return <h1>Home</h1>;
+  return (
+    <Layout>
+      <h1>Home</h1>
+    </Layout>
+  );
+}
+
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
 }
 
 export default Home;
