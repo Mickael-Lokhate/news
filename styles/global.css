@@ -1,5 +1,14 @@
 body {
-  background-color: #2d3142;
+  background: rgb(45, 49, 66);
+  background: radial-gradient(
+    circle,
+    rgba(45, 49, 66, 1) 0%,
+    rgba(9, 9, 121, 1) 16%,
+    rgba(155, 41, 21, 1) 100%
+  );
+
   font-family: "Roboto", "Helvetica", sans-serif;
   color: #bfc0c0;
+  width: 80%;
+  margin: 0 auto;
 }
