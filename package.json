@@ -1,0 +1,30 @@
+{
+  "name": "news",
+  "version": "1.0.0",
+  "description": "Top news for a country + research for news",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "start": "next start",
+    "build": "next build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mickael-Lokhate/news.git"
+  },
+  "keywords": [
+    "news",
+    "country"
+  ],
+  "author": "Mickael Lokhate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mickael-Lokhate/news/issues"
+  },
+  "homepage": "https://github.com/Mickael-Lokhate/news#readme",
+  "dependencies": {
+    "next": "^12.1.6",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  }
+}
