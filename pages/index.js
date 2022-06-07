@@ -1,6 +1,8 @@
 import Article from "../components/Article";
 import Layout from "../components/Layout";
 import React from "react";
+import Loading from "../components/Loading";
+import { trackPromise } from "react-promise-tracker";
 
 function Home({ all_articles }) {
   const [articles, setArticles] = React.useState(all_articles);
@@ -24,9 +26,11 @@ function Home({ all_articles }) {
 
   React.useEffect(() => {
     const getHeadlines = async () => {
-      const res = await fetch(`http://localhost:3000/api/headlines/${country}`);
+      const res = await trackPromise(
+        fetch(`http://localhost:3000/api/headlines/${country}`)
+      );
       const data = await res.json();
-      if (data && data.articles) setArticles(data.articles);
+      if (data && data.results) setArticles(data.results);
     };
     getData();
     if (country) {
@@ -38,10 +42,11 @@ function Home({ all_articles }) {
     <Layout>
       <h2> - Last Articles for your country ({country ?? "US"}) - </h2>
       <hr />
+      <Loading text={"Loading..."} />
       <div className="last-articles">
-        {articles.map((a, i) =>
-          a.urlToImage ? <Article article={a} key={i} /> : false
-        )}
+        {articles.map((a, i) => (
+          <Article article={a} key={i} />
+        ))}
       </div>
 
       <style jsx>{`
@@ -50,6 +55,7 @@ function Home({ all_articles }) {
           flex-direction: row;
           flex-wrap: wrap;
           gap: 1em;
+          margin-bottom: 2em;
         }
       `}</style>
     </Layout>
@@ -61,7 +67,7 @@ export async function getServerSideProps(context) {
   const data = await res.json();
   return {
     props: {
-      all_articles: data.articles ?? [],
+      all_articles: data.results ?? [],
     },
   };
 }

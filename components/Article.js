@@ -5,16 +5,20 @@ export default function Article({ article }) {
     <div className="article">
       <img
         alt="article illustration"
-        src={article.urlToImage}
+        src={article.image_url}
         className="article-img"
       />
       <div className="article-infos">
-        <h3 className="article-title" title={article.title}>
-          {article.title}
-        </h3>
-        <p className="article-description">{article.description}</p>
+        <a href={article.link} target="_blank" className="article-link">
+          <h3 className="article-title" title={article.title}>
+            {article.title}
+          </h3>
+        </a>
+        <div className="article-description">
+          <p className="article-description-text">{article.description}</p>
+        </div>
         <div>
-          <a href={article.url} target="_blank" className="article-more">
+          <a href={article.link} target="_blank" className="article-link">
             Read more
           </a>
         </div>
@@ -27,7 +31,7 @@ export default function Article({ article }) {
           align-items: flex-start;
           justify-content: flex-start;
           gap: 1em;
-          object-fit: cover;
+
           max-height: 300px;
           max-width: 48%;
           border-radius: 5px;
@@ -40,6 +44,7 @@ export default function Article({ article }) {
           height: 100%;
           max-width: 40%;
           border-radius: 5px 0 0 5px;
+          object-fit: cover;
         }
 
         .article-title {
@@ -48,16 +53,23 @@ export default function Article({ article }) {
         }
 
         .article-description {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-height: 60%;
+        }
+
+        .article-description-text {
+          height: 100%;
           font-size: 14px;
         }
 
-        .article-more {
+        .article-link {
           color: ${Colors.ORANGE};
           text-decoration: none;
           font-size: 14px;
         }
 
-        .article-more:hover {
+        .article-link:hover {
           opacity: 0.8;
         }
 
